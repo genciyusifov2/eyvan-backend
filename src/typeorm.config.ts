@@ -12,6 +12,6 @@ import { DataSource, DataSourceOptions } from "typeorm";
    entities: [ '/**/*.entity{.js}'], // Entity dosyalarının yolu
   //  migrations:['/**/*.migiration{.js}'],
    synchronize: true, // Geliştirme aşamasında otomatik senkronizasyon
-   ssl:false
+   ssl:true
   }
   export const dataSource=new DataSource(config)
