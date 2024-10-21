@@ -2,11 +2,11 @@ import { DataSource, DataSourceOptions } from "typeorm";
 
  const config:DataSourceOptions={
     type: 'postgres', // Veritabanı türü
-   host: 'localhost', // Veritabanı host'u
+   host: 'dpg-csb83ue8ii6s7383sjpg-a.oregon-postgres.render.com', // Veritabanı host'u
    port: 5432, // Veritabanı portu
-   username: 'yusifovgenci', // Veritabanı kullanıcı adı
-   password: 'west5566', // Veritabanı şifresi
-   database: 'database-eyvan2', // Kullanmak istediğiniz veritabanı adı
+   username: 'eyvan', // Veritabanı kullanıcı adı
+   password: 'xdkWg6tpWyjHbZM7lI09jQVVhZNju3tn', // Veritabanı şifresi
+   database: 'eyvan', // Kullanmak istediğiniz veritabanı adı
    migrationsTableName:"migiration",
    migrationsRun:true,
    entities: [ '/**/*.entity{.js}'], // Entity dosyalarının yolu
