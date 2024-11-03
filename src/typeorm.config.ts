@@ -1,6 +1,10 @@
 import { DataSource, DataSourceOptions } from "typeorm";
 // 
 // 
+// 
+// 
+// 
+// 
  const config:DataSourceOptions={
     type: 'postgres', // Veritabanı türü
    host: 'dpg-csb83ue8ii6s7383sjpg-a.oregon-postgres.render.com', // Veritabanı host'u
