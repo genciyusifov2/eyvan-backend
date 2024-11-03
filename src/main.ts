@@ -7,11 +7,12 @@ async function bootstrap() {
 
   // CORS'u etkinleştirin
   app.enableCors({
-    origin: 'https://eyvan-backend.onrender.com', // İzin verilen origin (frontend uygulamanızın URL'si)
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // İzin verilen HTTP yöntemleri
-    credentials: true, // İsteğe bağlı, eğer cookie veya authorization header kullanıyorsanız true yapabilirsiniz
+    origin: "*",
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Cookie veya auth header kullanıyorsanız true yapın
   });
-  app.useGlobalPipes(new ValidationPipe())
-  await app.listen(3000);
+
+  app.useGlobalPipes(new ValidationPipe());
+  await app.listen(process.env.PORT || 3000); // Render için dinlenecek portu ortam değişkeni ile belirleyin
 }
 bootstrap();
