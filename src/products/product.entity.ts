@@ -20,7 +20,7 @@ export class Product {
 
   // Yeni stocSayisi sütunu
   @Column({ type: "int", default: 0 })
-  stocSayisi: number;
+  stokMiqdari: number;
 
   constructor(product: Partial<Product>) {
     if (product) {
