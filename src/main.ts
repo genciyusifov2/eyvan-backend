@@ -7,10 +7,11 @@ async function bootstrap() {
 
   // CORS'u etkinleştirin
   app.enableCors({
-    origin: "*",
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Cookie veya auth header kullanıyorsanız true yapın
+    credentials: false,
   });
+  
 
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(process.env.PORT || 3000); // Render için dinlenecek portu ortam değişkeni ile belirleyin
