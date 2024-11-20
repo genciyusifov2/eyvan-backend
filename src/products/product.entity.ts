@@ -1,4 +1,3 @@
-import { IsString } from 'class-validator';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity("product")
@@ -18,7 +17,6 @@ export class Product {
   @Column({ type: "varchar" })
   satisQiymeti: string;
 
-  // Yeni stocSayisi sütunu
   @Column({ type: "int", default: 0 })
   stokMiqdari: number;
 

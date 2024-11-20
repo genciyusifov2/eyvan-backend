@@ -1,3 +1,4 @@
+// src/orders/order.entity.ts
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
@@ -5,8 +6,14 @@ export class Order {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  product: string;
+  @Column('json')
+  product: Array<{
+    id: string;
+    category: string;
+    productName: string;
+    price: number;
+    quantity: number;
+  }>;
 
   @Column()
   driver: string;

@@ -1,41 +1,47 @@
 import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
+import { UpdateOrderDto } from './dto/update-order.dto';
 
 @Injectable()
 export class OrdersService {
-  private orders = []; // Temporary array for orders
+  private orders = []; // Basit bir array ile simülasyon yapıyoruz
 
-  getAllOrders() {
-    return this.orders;
+  // Yeni sipariş oluşturma
+  async createOrder(createOrderDto: CreateOrderDto) {
+    const newOrder = { id: Date.now().toString(), ...createOrderDto };
+    this.orders.push(newOrder);
+    return { message: 'Order created successfully', data: newOrder };
   }
 
-  getOrderById(id: number) {
+  // Tüm siparişleri listeleme
+  async getAllOrders() {
+    return { data: this.orders };
+  }
+
+  // ID'ye göre bir sipariş alma
+  async getOrderById(id: string) {
     const order = this.orders.find(order => order.id === id);
     if (!order) {
-      throw new Error(`Order with ID ${id} not found`); // Error handling
+      return { message: 'Order not found', statusCode: 404 };
     }
-    return order;
+    return { data: order };
   }
 
-  createOrder(createOrderDto: CreateOrderDto) {
-    const newOrder = { id: Date.now(), ...createOrderDto };
-    this.orders.push(newOrder);
-    return newOrder;
-  }
-
-  updateOrder(id: number, updateOrderDto: CreateOrderDto) {
-    const index = this.orders.findIndex(order => order.id === id);
-    if (index !== -1) {
-      this.orders[index] = { ...this.orders[index], ...updateOrderDto };
-      return this.orders[index];
+  // Siparişi güncelleme
+  async updateOrder(id: string, updateOrderDto: UpdateOrderDto) {
+    let order = this.orders.find(order => order.id === id);
+    if (!order) {
+      return { message: 'Order not found', statusCode: 404 };
     }
-    throw new Error(`Order with ID ${id} not found`); // Error handling
+    order = { ...order, ...updateOrderDto };
+    return { message: 'Order updated successfully', data: order };
   }
 
-  deleteOrder(id: number) {
+  // Siparişi silme
+  async deleteOrder(id: string) {
     const index = this.orders.findIndex(order => order.id === id);
     if (index === -1) {
-      throw new Error(`Order with ID ${id} not found`); // Error handling
+      return { message: 'Order not found', statusCode: 404 };
     }
     this.orders.splice(index, 1);
     return { message: 'Order deleted successfully' };

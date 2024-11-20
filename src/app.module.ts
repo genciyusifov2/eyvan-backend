@@ -6,9 +6,10 @@ import { ProductsModule } from './products/products.module';
 import { Product } from './products/product.entity';
 import { dataSource } from './typeorm.config';
 import { PersonsModule } from './persons/persons.module';
-import { Person } from './persons/person.entity'; // Person entity'sini ekleyin
+import { Person } from './persons/person.entity';
 import { SettingsModule } from './settings/settings.module';
 import { OrdersModule } from './orders/orders.module';
+import { Order } from './orders/order.entity'; // Order entity'sini import edin
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { OrdersModule } from './orders/orders.module';
         try {
           const options = {
             ...dataSource.options,
-            entities: [Product, Person], // Product ve Person entity'lerini tanımlayın
+            entities: [Product, Person, Order], // Order entity'sini ekleyin
           };
 
           if (!dataSource.isInitialized) {

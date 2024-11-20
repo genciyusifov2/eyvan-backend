@@ -1,37 +1,39 @@
-import { Controller, Get, Post, Body, Put, Delete, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Delete } from '@nestjs/common';
 import { OrdersService } from './orders.service';
+import { CreateOrderDto } from './dto/create-order.dto';
+import { UpdateOrderDto } from './dto/update-order.dto';
 
 @Controller('orders')
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
-  // Create a new order
+  // POST: Yeni sipariş oluşturma
   @Post()
-  create(@Body() orderDto: any) {
-    return this.ordersService.createOrder(orderDto);
+  async createOrder(@Body() createOrderDto: CreateOrderDto) {
+    return await this.ordersService.createOrder(createOrderDto);
   }
 
-  // Get all orders
+  // GET: Tüm siparişleri listeleme
   @Get()
-  findAll() {
-    return this.ordersService.getAllOrders();
+  async getAllOrders() {
+    return await this.ordersService.getAllOrders();
   }
 
-  // Get a specific order by ID
+  // GET: ID'ye göre bir sipariş alma
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.ordersService.getOrderById(+id); // Convert string to number
+  async getOrderById(@Param('id') id: string) {
+    return await this.ordersService.getOrderById(id);
   }
 
-  // Update an existing order by ID
+  // PUT: Siparişi güncelleme
   @Put(':id')
-  update(@Param('id') id: string, @Body() orderDto: any) {
-    return this.ordersService.updateOrder(+id, orderDto); // Convert string to number
+  async updateOrder(@Param('id') id: string, @Body() updateOrderDto: UpdateOrderDto) {
+    return await this.ordersService.updateOrder(id, updateOrderDto);
   }
 
-  // Delete an order by ID
+  // DELETE: Siparişi silme
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.ordersService.deleteOrder(+id); // Convert string to number
+  async deleteOrder(@Param('id') id: string) {
+    return await this.ordersService.deleteOrder(id);
   }
 }
