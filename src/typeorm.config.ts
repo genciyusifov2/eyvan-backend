@@ -11,7 +11,10 @@ const dataSource = new DataSource({
   logging: true, // SQL sorgularını görmek için logging'i açabilirsiniz
   entities: [__dirname + "/**/*.entity{.ts,.js}"],
   migrationsRun: true,
-  ssl:false
+  ssl:false,
+    extra: {
+    connectionTimeoutMillis: 5000, // Timeout for establishing a connection
+  }
 });
 
 dataSource
