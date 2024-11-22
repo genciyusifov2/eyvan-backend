@@ -2,7 +2,7 @@ import { DataSource } from "typeorm";
 
 const dataSource = new DataSource({
   type: "postgres",
-  host: "127.0.0.1", // Eğer VPS'ten bağlanıyorsanız localhost kullanın.
+  host: "145.223.83.25", // Eğer VPS'ten bağlanıyorsanız localhost kullanın.
   port: 5432, // Varsayılan PostgreSQL portu
   username: "admin", // PostgreSQL kullanıcı adı
   password: "Qwerty4876__", // PostgreSQL şifresi
