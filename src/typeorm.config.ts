@@ -11,6 +11,7 @@ const dataSource = new DataSource({
   logging: true, // SQL sorgularını görmek için logging'i açabilirsiniz
   entities: [__dirname + "/**/*.entity{.ts,.js}"],
   migrationsRun: true,
+  ssl:false
 });
 
 dataSource
