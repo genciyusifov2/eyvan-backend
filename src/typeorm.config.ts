@@ -1,27 +1,26 @@
-import { DataSource, DataSourceOptions } from "typeorm";
+import { DataSource } from "typeorm";
 
-const config: DataSourceOptions = {
-  type: 'postgres',
-  host: 'localhost', // VPS üzerinde localhost
-  port: 5432, // PostgreSQL'in varsayılan portu
-  username: 'admin', // PostgreSQL kullanıcısı
-  password: 'Qwerty4876__', // PostgreSQL şifresi
-  database: 'eyvandb', // Kullanacağınız veritabanı
+const dataSource = new DataSource({
+  type: "postgres",
+  host: "localhost", // Eğer VPS'ten bağlanıyorsanız localhost kullanın.
+  port: 5432, // Varsayılan PostgreSQL portu
+  username: "admin", // PostgreSQL kullanıcı adı
+  password: "Qwerty4876__", // PostgreSQL şifresi
+  database: "eyvandb", // Kullanmak istediğiniz veritabanı
+  synchronize: true, // Eğer geliştirme aşamasındaysanız veritabanı otomatik senkronizasyon yapılır
+  logging: true, // SQL sorgularını görmek için logging'i açabilirsiniz
+  entities: [__dirname + "/**/*.entity{.ts,.js}"],
   migrationsRun: true,
-  entities: [__dirname + '/**/*.entity{.ts,.js}'], // Entity dosyalarının yolu
-  synchronize: true, // Otomatik senkronizasyon
-  ssl: false // SSL bağlantısı gerekiyorsa true yapabilirsiniz
-};
+});
 
-export const dataSource = new DataSource(config);
-
-
-// Veritabanı bağlantısını test etme
 dataSource
   .initialize()
   .then(() => {
-    console.log('Veritabanı bağlantısı başarılı');
+    console.log("Veritabanı bağlantısı başarılı");
   })
   .catch((error) => {
-    console.error('Veritabanı bağlantısı hatası:', error);
+    console.error("Veritabanı bağlantısı hatası:", error);
   });
+
+
+
