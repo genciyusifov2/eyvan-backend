@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
 
-const dataSource = new DataSource({
+export const dataSource = new DataSource({
   type: "postgres",
   host: "145.223.83.25", // Eğer VPS'ten bağlanıyorsanız localhost kullanın.
   port: 5432, // Varsayılan PostgreSQL portu
