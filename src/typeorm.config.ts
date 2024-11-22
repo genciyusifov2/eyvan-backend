@@ -4,7 +4,7 @@ export const dataSource = new DataSource({
   type: "postgres",
   host: "localhost", // Eğer VPS'ten bağlanıyorsanız localhost kullanın.
   port: 5432, // Varsayılan PostgreSQL portu
-  username: "admin", // PostgreSQL kullanıcı adı
+  username: "postgres", // PostgreSQL kullanıcı adı
   password: "Qwerty4876__", // PostgreSQL şifresi
   database: "eyvandb", // Kullanmak istediğiniz veritabanı
   synchronize: true, // Eğer geliştirme aşamasındaysanız veritabanı otomatik senkronizasyon yapılır
