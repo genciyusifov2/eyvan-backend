@@ -17,14 +17,14 @@ export const dataSource = new DataSource({
   }
 });
 
-dataSource
-  .initialize()
-  .then(() => {
-    console.log("Veritabanı bağlantısı başarılı");
-  })
-  .catch((error) => {
-    console.error("Veritabanı bağlantısı hatası:", error);
-  });
+// dataSource
+//   .initialize()
+//   .then(() => {
+//     console.log("Veritabanı bağlantısı başarılı");
+//   })
+//   .catch((error) => {
+//     console.error("Veritabanı bağlantısı hatası:", error);
+//   });
 
 
 
